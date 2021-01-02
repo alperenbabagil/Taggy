@@ -1,0 +1,3 @@
+include ':taggy'
+include ':app'
+rootProject.name = "Taggy"

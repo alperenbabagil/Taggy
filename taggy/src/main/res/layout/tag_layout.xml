@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        style="@style/TagViewBaseStyle"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/selectedTagsFBL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:flexWrap="wrap"
+                app:justifyContent="flex_start"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/warningCV"
+                />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/warningCV"
+                style="@style/WarningTextCardViewStyle"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/selectedTagsFBL"
+                app:layout_constraintBottom_toTopOf="@id/tagEnterTIL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/warningTV"
+                    style="@style/WarningTextTextViewStyle"
+                    tools:text="Example warning message"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tagEnterTIL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/warningCV"
+                app:layout_constraintBottom_toTopOf="@id/suggestedTagsFBL"
+                android:hint="@string/enter_your_tags_here"
+                android:layout_margin="@dimen/text_input_layout_margin"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tagEnterET"
+                    style="@style/TextInputEditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/suggestedTagsFBL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:alignContent="stretch"
+                app:alignItems="stretch"
+                app:flexWrap="wrap"
+                app:layout_constraintTop_toBottomOf="@id/tagEnterTIL"
+                />
+
+            <Button
+                android:id="@+id/cancelTagEditingBTN"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/doneTagEditingBTN"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/suggestedTagsFBL"
+                android:text="@string/cancel"
+                android:backgroundTint="@color/cancelButtonBackgroundColor"
+                android:textColor="@color/cancelButtonTextColor"
+                app:strokeColor="@color/white"
+                app:strokeWidth="@dimen/cancel_button_stroke_width"
+                />
+
+            <Button
+                android:id="@+id/doneTagEditingBTN"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                android:text="@string/done"
+                app:layout_constraintStart_toEndOf="@+id/cancelTagEditingBTN"
+                app:layout_constraintTop_toBottomOf="@id/suggestedTagsFBL"
+                android:backgroundTint="@color/doneButtonBackgroundColor"
+                android:textColor="@color/doneButtonTextColor"
+
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</merge>

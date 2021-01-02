@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="tag_view_item_attributes">
+        <attr name="selected_tags_limit" format="integer" />
+        <attr name="suggested_tags_limit" format="integer" />
+        <attr name="show_max_selected_tags_warning" format="boolean" />
+        <attr name="max_selected_tags_warning_text" format="string" />
+        <attr name="max_selected_tags_warning_duration" format="integer" />
+        <attr name="warning_text_timeout_in_milliseconds" format="integer" />
+        <attr name="show_done_button" format="boolean"/>
+        <attr name="show_cancel_button" format="boolean"/>
+    </declare-styleable>
+</resources>
