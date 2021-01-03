@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
         var currentSearchJob : Job?=null
         val suggester = Suggester()
-        taggyView.apply {
+        tagView.apply {
             suggestedTagsLimit=6
             selectedTagsLimit=4
             setSelectedTags(listOf("happy","style","life"))

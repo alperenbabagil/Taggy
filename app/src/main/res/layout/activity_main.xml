@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <com.alperenbabagil.taggylib.TagView
-        android:id="@+id/taggyView"
+        android:id="@+id/tagView"
         android:layout_width="300dp"
         android:layout_margin="10dp"
         app:layout_constraintStart_toStartOf="parent"

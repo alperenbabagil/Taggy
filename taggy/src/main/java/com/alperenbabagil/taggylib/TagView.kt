@@ -216,18 +216,18 @@ class TagView @JvmOverloads constructor(
 
                 mainViewBinding.apply {
                     warningCV.show()
-                    warningTV.text=message
-                    setOnClickListener {
+                    warningCV.setOnClickListener {
                         toastClickCallback?.invoke(id,message)
                     }
+                    warningTV.text=message
                 }
 
                 delay(duration.toLong())
 
                 mainViewBinding.apply {
                     warningCV.hide()
-                    warningTV.text=""
                     warningCV.setOnClickListener(null)
+                    warningTV.text=""
                 }
 
             }
