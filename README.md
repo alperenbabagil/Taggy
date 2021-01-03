@@ -44,7 +44,7 @@ tagView.apply {
 ```
 You can change dimensions and colors by changing values of same keys that library uses. Plus you can change style to modify a component's entire look.
 
-### Using in floating window
+### Using in Floating Windows
 TextInputLayout and EditText dont't work well with services. Floating windows are mostly used without an activity, so they have service and application context.
 We must set app theme before inflating floating views like this:
 ```kotlin
