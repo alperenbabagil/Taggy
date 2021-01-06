@@ -16,7 +16,7 @@ Add it in your root build.gradle at the end of repositories:
 		}
 	}
 ```
-Then add these to desired module:
+Then add this to desired module:
 ```gradle
 implementation "com.github.alperenbabagil:taggy:$version"
 ```
