@@ -79,7 +79,10 @@ class TagView @JvmOverloads constructor(
             if (showDoneButton) {
                 doneTagEditingBTN.apply {
                     setOnClickListener {
-                        doneButtonCallback?.invoke(getSelectedTags())
+                        if(selectedTags.isEmpty()){
+                            showWarningMessage(context.getString(R.string.you_havent_selected_any_tabs))
+                        }
+                        else doneButtonCallback?.invoke(getSelectedTags())
                     }
                     visibility = View.VISIBLE
                 }
@@ -97,6 +100,7 @@ class TagView @JvmOverloads constructor(
             tagEnterET.setOnEditorActionListener { v, actionId, event ->
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
                     addTag(tagEnterET.text.toString())
+                    mainViewBinding.tagEnterET.setText("")
                     return@setOnEditorActionListener true
                 }
                 false
