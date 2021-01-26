@@ -107,7 +107,7 @@ class TagView @JvmOverloads constructor(
             }
 
             tagEnterET.doOnTextChanged { text, start, before, count ->
-                textEnteredCallback?.invoke(text.toString())
+                textEnteredCallback?.invoke(text.toString().trimEnd())
             }
         }
     }
