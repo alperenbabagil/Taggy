@@ -3,12 +3,13 @@
     android:shape="rectangle">
 
     <!-- Background color -->
-    <solid android:color="@color/cancelButtonBackgroundColor" />
+    <solid android:color="?attr/colorPrimaryVariant" />
 
     <!-- The corners of the shape -->
     <corners android:radius="@dimen/done_button_radius"/>
 
-    <stroke android:width="@dimen/cancel_button_stroke_width" android:color="@color/cancelStrokeColor"/>
+    <stroke android:width="@dimen/cancel_button_stroke_width"
+        android:color="?attr/colorOnPrimary"/>
 
     <!-- Padding for the background, e.g the Text inside a TextView will be
     located differently -->

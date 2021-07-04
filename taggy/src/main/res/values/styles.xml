@@ -4,19 +4,31 @@
     <style name="TagItemTextViewStyle" parent="Theme.AppCompat">
         <item name="android:layout_margin">@dimen/card_item_text_view_margin</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/cardItemTextColor</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
         <item name="android:gravity">center_vertical</item>
     </style>
 
     <style name="TagItemCloseButtonStyle" parent="Theme.AppCompat">
         <item name="android:src">@drawable/ic_baseline_cancel_24</item>
         <item name="android:layout_marginStart">@dimen/card_item_image_view_margin_start</item>
+    </style>
 
+    <style name="CancelTagEditingButtonStyle" parent="Theme.AppCompat">
+        <item name="android:backgroundTint">?attr/colorPrimaryVariant</item>
+        <item name="android:textColor">?attr/colorSecondaryVariant</item>
+<!--        <item name="android:textColor">@android:color/white</item>-->
+        <item name="strokeColor">@android:color/white</item>
+        <item name="strokeWidth">@dimen/cancel_button_stroke_width</item>
+    </style>
+
+    <style name="DoneTagEditingButtonStyle" parent="Theme.AppCompat">
+        <item name="android:backgroundTint">?attr/colorPrimary</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
     </style>
 
     <style name="TagItemStyle" parent="Theme.AppCompat">
         <item name="android:layout_margin">@dimen/card_item_margin</item>
-        <item name="cardBackgroundColor">@color/cardItemBackgroundColor</item>
+        <item name="cardBackgroundColor">?attr/colorPrimary</item>
         <item name="cardCornerRadius">@dimen/tag_item_corner_radius</item>
         <item name="cardElevation">@dimen/tag_item_card_elevation</item>
     </style>
@@ -25,12 +37,12 @@
         <item name="cardCornerRadius">@dimen/warning_cv_card_corner_radius</item>
         <item name="cardElevation">@dimen/warning_cv_card_elevation</item>
         <item name="android:layout_margin">@dimen/warning_cv_margin</item>
-        <item name="cardBackgroundColor">@color/warningCVBackgroundColor</item>
+        <item name="cardBackgroundColor">?attr/colorSecondary</item>
     </style>
 
     <style name="WarningTextTextViewStyle" parent="Theme.AppCompat">
         <item name="android:textSize">@dimen/warning_tv_text_size</item>
-        <item name="android:textColor">@color/warningTextBackgroundColor</item>
+        <item name="android:textColor">?attr/colorOnSecondary</item>
         <item name="android:layout_margin">@dimen/warning_tv_margin</item>
         <item name="android:gravity">center</item>
         <item name="android:textStyle">bold</item>
@@ -43,10 +55,9 @@
     </style>
 
     <style name="TagViewBaseStyle" parent="Theme.AppCompat">
-        <item name="cardBackgroundColor">@color/colorPrimaryVariant</item>
+        <item name="cardBackgroundColor">?attr/colorPrimaryVariant</item>
         <item name="cardElevation">@dimen/tag_view_base_elevation</item>
         <item name="cardCornerRadius">@dimen/tag_view_base_radius</item>
-
     </style>
 
 </resources>

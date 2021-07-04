@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
                 currentSearchJob?.cancel()
                 setLoadingState(true)
                 currentSearchJob=lifecycleScope.launch{
-                    delay(Random.nextLong(1000,2500))
+                    delay(Random.nextLong(1500,2500))
                     launch (Dispatchers.Main){
                         setSuggestedTags(sequence {
                             repeat(Random.nextInt(1,10)){

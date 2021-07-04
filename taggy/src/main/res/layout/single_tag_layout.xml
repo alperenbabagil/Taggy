@@ -6,11 +6,9 @@
     android:layout_height="wrap_content"
     style="@style/TagItemStyle"
     >
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/tagTV"
@@ -30,7 +28,9 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/cancel" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
