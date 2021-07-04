@@ -1,12 +1,18 @@
 package com.alperenbabagil.taggylib
 
 import android.content.Context
+import android.content.res.ColorStateList
+import android.graphics.drawable.Animatable
+import android.graphics.drawable.Drawable
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.res.getColorOrThrow
+import androidx.core.content.res.getDrawableOrThrow
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
@@ -16,10 +22,9 @@ import com.alperenbabagil.commonextensions.toPx
 import com.alperenbabagil.taggylib.databinding.SingleTagLayoutBinding
 import com.alperenbabagil.taggylib.databinding.TagLayoutBinding
 import com.google.android.flexbox.FlexboxLayout
-import com.google.android.material.progressindicator.CircularDrawingDelegate
-import com.google.android.material.progressindicator.CircularIndeterminateAnimatorDelegate
+import com.google.android.material.progressindicator.CircularProgressIndicator
+import com.google.android.material.progressindicator.CircularProgressIndicatorSpec
 import com.google.android.material.progressindicator.IndeterminateDrawable
-import com.google.android.material.progressindicator.ProgressIndicatorSpec
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -58,10 +63,11 @@ class TagView @JvmOverloads constructor(
     private var maxSelectedTagsWarningDuration = 3000
     private var warningTextTimeoutInMilliseconds = 5000
     private var currentHideToastJob : Job?=null
+    private var colorStates : ColorStateList? = null
 
     init {
         attrs?.let {
-            val typedArray = context.obtainStyledAttributes(it,
+            val typedArray = context.theme.obtainStyledAttributes(it,
                     R.styleable.tag_view_item_attributes, 0, 0)
 
             showDoneButton = typedArray.getBoolean(R.styleable.tag_view_item_attributes_show_done_button, true)
@@ -181,32 +187,34 @@ class TagView @JvmOverloads constructor(
             if(isLoading){
                 endIconMode = TextInputLayout.END_ICON_CUSTOM
                 endIconDrawable = getLoadingIndicator()
+                colorStates?.let {
+                    setEndIconTintList(it)
+                }
             }
             else{
                 endIconMode = TextInputLayout.END_ICON_NONE
                 endIconDrawable = null
-
+                setEndIconTintList(null)
             }
         }
     }
 
-    private fun getLoadingIndicator() : IndeterminateDrawable{
-        val progressIndicatorSpec = ProgressIndicatorSpec()
-        progressIndicatorSpec.loadFromAttributes(
-                context,
-                null,
-                R.style.Widget_MaterialComponents_ProgressIndicator_Circular_Indeterminate)
+    private fun getLoadingIndicator() : Drawable {
+        val colorArray = context.obtainStyledAttributes(intArrayOf(android.R.attr.colorPrimary))
+        val primaryColor = colorArray.getColorOrThrow(0)
+        colorArray.recycle()
+        colorStates = ColorStateList(arrayOf(intArrayOf()), intArrayOf(primaryColor))
 
-        progressIndicatorSpec.circularInset = 0 // Inset
-
-        progressIndicatorSpec.circularRadius = 10.toPx()
-
-
-        return IndeterminateDrawable(
-                context,
-                progressIndicatorSpec,
-                CircularDrawingDelegate(),
-                CircularIndeterminateAnimatorDelegate())
+        val value = TypedValue()
+        context.theme.resolveAttribute(android.R.attr.progressBarStyleSmall, value, false)
+        val progressBarStyle = value.data
+        val attributes = intArrayOf(android.R.attr.indeterminateDrawable)
+        val array = context.obtainStyledAttributes(progressBarStyle, attributes)
+        val drawable = array.getDrawableOrThrow(0)
+        array.recycle()
+        (drawable as? Animatable)?.start()
+        drawable.setTintList(colorStates)
+        return drawable
     }
 
     fun showWarningMessage(message:String,
