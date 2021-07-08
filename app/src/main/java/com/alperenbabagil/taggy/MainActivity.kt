@@ -2,6 +2,7 @@ package com.alperenbabagil.taggy
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import kotlinx.android.synthetic.main.activity_main.*
@@ -23,9 +24,12 @@ class MainActivity : AppCompatActivity() {
             selectedTagsLimit=4
             setSelectedTags(listOf("happy","style","life"))
             setSuggestedTags(listOf("photo","nature","cute","insta","model","music","travel","likesforlike"))
-            textEnteredCallback = {text->
+            textEnteredCallback = lambda@{ text->
                 currentSearchJob?.cancel()
+                //Setting loading state true right after clear button click causes bugs.
+                if(text.isEmpty()) return@lambda
                 setLoadingState(true)
+                Log.d("Loading","True")
                 currentSearchJob=lifecycleScope.launch{
                     delay(Random.nextLong(1500,2500))
                     launch (Dispatchers.Main){

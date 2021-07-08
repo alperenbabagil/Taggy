@@ -6,13 +6,13 @@
     <solid android:color="?attr/colorPrimaryVariant" />
 
     <!-- The corners of the shape -->
-    <corners android:radius="@dimen/done_button_radius"/>
+    <corners android:radius="@dimen/cancel_button_radius"/>
 
     <stroke android:width="@dimen/cancel_button_stroke_width"
-        android:color="?attr/colorOnPrimary"/>
-
+        android:color="?attr/colorSecondaryVariant"/>
     <!-- Padding for the background, e.g the Text inside a TextView will be
     located differently -->
-    <padding android:left="@dimen/button_horizontal_margin" android:right="@dimen/button_horizontal_margin" />
+    <padding android:left="@dimen/button_horizontal_padding"
+        android:right="@dimen/button_horizontal_padding" />
 
 </shape>

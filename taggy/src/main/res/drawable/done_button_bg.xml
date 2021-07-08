@@ -10,6 +10,6 @@
 
     <!-- Padding for the background, e.g the Text inside a TextView will be
     located differently -->
-    <padding android:left="@dimen/button_horizontal_margin" android:right="@dimen/button_horizontal_margin" />
+    <padding android:left="@dimen/button_horizontal_padding" android:right="@dimen/button_horizontal_padding" />
 
 </shape>

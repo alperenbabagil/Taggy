@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/transparent"
     android:animateLayoutChanges="true"
     >
 
@@ -54,6 +55,7 @@
                 app:layout_constraintBottom_toTopOf="@id/suggestedTagsFBL"
                 android:hint="@string/enter_your_tags_here"
                 android:layout_margin="@dimen/text_input_layout_margin"
+                app:endIconMode="clear_text"
                 >
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tagEnterET"
@@ -73,11 +75,9 @@
                 app:layout_constraintTop_toBottomOf="@id/tagEnterTIL"
                 />
 
-            <Button
+            <android.widget.Button
                 android:id="@+id/cancelTagEditingBTN"
                 android:visibility="gone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/doneTagEditingBTN"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -87,11 +87,9 @@
                 style="@style/CancelTagEditingButtonStyle"
                 />
 
-            <Button
+            <android.widget.Button
                 android:id="@+id/doneTagEditingBTN"
                 android:visibility="gone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"

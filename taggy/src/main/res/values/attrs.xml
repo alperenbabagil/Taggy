@@ -4,6 +4,7 @@
         <attr name="selected_tags_limit" format="integer" />
         <attr name="suggested_tags_limit" format="integer" />
         <attr name="show_max_selected_tags_warning" format="boolean" />
+        <attr name="show_uncompleted_tag_warning" format="boolean" />
         <attr name="max_selected_tags_warning_text" format="string" />
         <attr name="max_selected_tags_warning_duration" format="integer" />
         <attr name="warning_text_timeout_in_milliseconds" format="integer" />

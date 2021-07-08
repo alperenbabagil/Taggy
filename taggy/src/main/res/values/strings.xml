@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="enter_your_tags_here">Enter your tags here</string>
+    <string name="enter_your_tags_here">Type your tag and press enter.</string>
     <string name="cancel">Cancel</string>
     <string name="done">Done</string>
     <string name="max_selected_tab_number_is_reached">Maximum selected tab number is reached</string>
     <string name="you_havent_selected_any_tabs">You haven\'t selected any tags</string>
+    <string name="you_have_an_unfinished_tag">You have an unfinished tag</string>
 </resources>

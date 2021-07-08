@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources >
 
     <style name="TagItemTextViewStyle" parent="Theme.AppCompat">
         <item name="android:layout_margin">@dimen/card_item_text_view_margin</item>
@@ -9,21 +9,25 @@
     </style>
 
     <style name="TagItemCloseButtonStyle" parent="Theme.AppCompat">
+        <item name="android:layout_margin">@dimen/button_margin</item>
         <item name="android:src">@drawable/ic_baseline_cancel_24</item>
         <item name="android:layout_marginStart">@dimen/card_item_image_view_margin_start</item>
     </style>
 
     <style name="CancelTagEditingButtonStyle" parent="Theme.AppCompat">
-        <item name="android:backgroundTint">?attr/colorPrimaryVariant</item>
+        <item name="android:background">@drawable/cancel_button_bg</item>
+        <item name="android:layout_margin">@dimen/button_margin</item>
         <item name="android:textColor">?attr/colorSecondaryVariant</item>
-<!--        <item name="android:textColor">@android:color/white</item>-->
-        <item name="strokeColor">@android:color/white</item>
-        <item name="strokeWidth">@dimen/cancel_button_stroke_width</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/button_height</item>
     </style>
 
     <style name="DoneTagEditingButtonStyle" parent="Theme.AppCompat">
-        <item name="android:backgroundTint">?attr/colorPrimary</item>
-        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+        <item name="android:background">@drawable/done_button_bg</item>
+        <item name="android:layout_margin">@dimen/button_margin</item>
+        <item name="android:textColor">?attr/colorSecondaryVariant</item>
     </style>
 
     <style name="TagItemStyle" parent="Theme.AppCompat">

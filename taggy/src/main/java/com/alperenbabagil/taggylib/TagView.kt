@@ -59,6 +59,7 @@ class TagView @JvmOverloads constructor(
     var selectedTagsLimit = 5
     var suggestedTagsLimit = 5
     private var showMaxSelectedTagsWarning = true
+    private var showUncompletedTagWarning = true
     private var maxSelectedTagsWarningText = context.getString(R.string.max_selected_tab_number_is_reached)
     private var maxSelectedTagsWarningDuration = 3000
     private var warningTextTimeoutInMilliseconds = 5000
@@ -75,6 +76,7 @@ class TagView @JvmOverloads constructor(
             selectedTagsLimit = typedArray.getInt(R.styleable.tag_view_item_attributes_selected_tags_limit, selectedTagsLimit)
             suggestedTagsLimit = typedArray.getInt(R.styleable.tag_view_item_attributes_suggested_tags_limit, suggestedTagsLimit)
             showMaxSelectedTagsWarning = typedArray.getBoolean(R.styleable.tag_view_item_attributes_show_max_selected_tags_warning, true)
+            showUncompletedTagWarning = typedArray.getBoolean(R.styleable.tag_view_item_attributes_show_uncompleted_tag_warning, true)
             maxSelectedTagsWarningText = typedArray.getString(R.styleable.tag_view_item_attributes_max_selected_tags_warning_text) ?: maxSelectedTagsWarningText
             maxSelectedTagsWarningDuration = typedArray.getInt(R.styleable.tag_view_item_attributes_max_selected_tags_warning_duration, maxSelectedTagsWarningDuration)
             warningTextTimeoutInMilliseconds = typedArray.getInt(R.styleable.tag_view_item_attributes_warning_text_timeout_in_milliseconds, warningTextTimeoutInMilliseconds)
@@ -85,10 +87,15 @@ class TagView @JvmOverloads constructor(
             if (showDoneButton) {
                 doneTagEditingBTN.apply {
                     setOnClickListener {
-                        if(selectedTags.isEmpty()){
-                            showWarningMessage(context.getString(R.string.you_havent_selected_any_tabs))
+                        if(showUncompletedTagWarning && !tagEnterET.text.isNullOrBlank()){
+                            showWarningMessage(R.string.you_have_an_unfinished_tag)
                         }
-                        else doneButtonCallback?.invoke(getSelectedTags())
+                        else{
+                            if(selectedTags.isEmpty()){
+                                showWarningMessage(R.string.you_havent_selected_any_tabs)
+                            }
+                            else doneButtonCallback?.invoke(getSelectedTags())
+                        }
                     }
                     visibility = View.VISIBLE
                 }
@@ -97,7 +104,10 @@ class TagView @JvmOverloads constructor(
             if (showCancelButton) {
                 cancelTagEditingBTN.apply {
                     setOnClickListener {
-                        cancelButtonCallback?.invoke()
+                        if(showUncompletedTagWarning && !tagEnterET.text.isNullOrBlank()){
+                            showWarningMessage(R.string.you_have_an_unfinished_tag)
+                        }
+                        else cancelButtonCallback?.invoke()
                     }
                     visibility = View.VISIBLE
                 }
@@ -185,6 +195,7 @@ class TagView @JvmOverloads constructor(
     fun setLoadingState(isLoading:Boolean){
         mainViewBinding.tagEnterTIL.apply {
             if(isLoading){
+                endIconDrawable = null
                 endIconMode = TextInputLayout.END_ICON_CUSTOM
                 endIconDrawable = getLoadingIndicator()
                 colorStates?.let {
@@ -192,8 +203,8 @@ class TagView @JvmOverloads constructor(
                 }
             }
             else{
-                endIconMode = TextInputLayout.END_ICON_NONE
-                endIconDrawable = null
+                endIconMode = TextInputLayout.END_ICON_CLEAR_TEXT
+                //endIconDrawable = null
                 setEndIconTintList(null)
             }
         }
@@ -215,6 +226,13 @@ class TagView @JvmOverloads constructor(
         (drawable as? Animatable)?.start()
         drawable.setTintList(colorStates)
         return drawable
+    }
+
+    fun showWarningMessage(messageResId:Int,
+                           duration: Int=warningTextTimeoutInMilliseconds,
+                           id:Int=1,
+                           toastClickCallback : ((id:Int,message:String) -> Unit)?=null){
+        showWarningMessage(context.getString(messageResId),duration,id,toastClickCallback)
     }
 
     fun showWarningMessage(message:String,

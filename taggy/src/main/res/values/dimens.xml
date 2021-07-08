@@ -11,7 +11,6 @@
     <dimen name="SapMessageBottomPadding">10dp</dimen>
 
 
-
     <dimen name="tag_item_corner_radius">10dp</dimen>
     <dimen name="tag_item_card_elevation">4dp</dimen>
     <dimen name="card_item_margin">4dp</dimen>
@@ -30,11 +29,15 @@
 
     <dimen name="text_input_layout_radius">10dp</dimen>
 
-    <dimen name="done_button_radius">10dp</dimen>
-    <dimen name="cancel_button_radius">10dp</dimen>
+    <dimen name="done_button_radius">4dp</dimen>
+    <dimen name="cancel_button_radius">4dp</dimen>
 
-    <dimen name="button_horizontal_margin">10dp</dimen>
+    <dimen name="button_horizontal_padding">4dp</dimen>
+    <dimen name="button_margin">4dp</dimen>
     <dimen name="cancel_button_stroke_width">2dp</dimen>
+
+    <dimen name="button_height">40dp</dimen>
+
 
     <dimen name="tag_view_base_radius">10dp</dimen>
     <dimen name="tag_view_base_elevation">4dp</dimen>
