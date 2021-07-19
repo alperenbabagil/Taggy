@@ -17,7 +17,7 @@
     <style name="CancelTagEditingButtonStyle" parent="Theme.AppCompat">
         <item name="android:background">@drawable/cancel_button_bg</item>
         <item name="android:layout_margin">@dimen/button_margin</item>
-        <item name="android:textColor">?attr/colorSecondaryVariant</item>
+        <item name="android:textColor">?attr/colorSecondary</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">@dimen/button_height</item>
     </style>
@@ -27,7 +27,7 @@
         <item name="android:layout_height">@dimen/button_height</item>
         <item name="android:background">@drawable/done_button_bg</item>
         <item name="android:layout_margin">@dimen/button_margin</item>
-        <item name="android:textColor">?attr/colorSecondaryVariant</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
     </style>
 
     <style name="TagItemStyle" parent="Theme.AppCompat">

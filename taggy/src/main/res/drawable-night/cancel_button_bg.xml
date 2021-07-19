@@ -9,7 +9,7 @@
     <corners android:radius="@dimen/cancel_button_radius"/>
 
     <stroke android:width="@dimen/cancel_button_stroke_width"
-        android:color="?attr/colorSecondary"/>
+        android:color="?attr/colorPrimary"/>
     <!-- Padding for the background, e.g the Text inside a TextView will be
     located differently -->
     <padding android:left="@dimen/button_horizontal_padding"
